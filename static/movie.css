@@ -1,0 +1,36 @@
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    table-layout: fixed;
+    padding: 2px;
+}
+
+td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(even) {
+    background-color: #c8d5d5;
+}
+
+.search-btn {
+    height: 30px;
+    width: 150px;
+    background: darkseagreen;
+    border: none;
+    color: #fafafa;
+    border-radius: 10px;
+    font-size: 14px;
+}
+
+.search-btn:hover {
+    background: darkcyan;
+    cursor: pointer;
+}
+
+.container {
+    padding: 10px;
+}
+

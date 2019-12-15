@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link href="../static/movie.css" rel="stylesheet">
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+
+    <link rel="icon"
+          href="https://lh5.googleusercontent.com/k3jFqaN3lAsLXTILR_3eTGsW8Bchh-62lPNhyQrFLsnaS5JcYty9vIWzui_ZKOFFSgjVk968Fiv2GOqGs5wTxvhSv4RboXLH0LBGvRhb5xUYQ1UuJOf1=w371">
+
+    <meta charset="UTF-8">
+    <title>{{title}}</title>
+</head>
+<body>
+<div class="jumbotron text-center"
+     style="background-image:radial-gradient(rgba(0,0,0,0.1),rgba(0,0,0,1)),url(../static/rear-view-mirror.jpg); background-size: cover;">
+    <div class="container for-about">
+        <h1 style="color: white">{{ movie.title }}</h1>
+        <a href="/home"> << Home</a>
+    </div>
+</div>
+
+<div class="container">
+    <img class="img-responsive" alt="" src="{{ movie['cover_url']}}">
+    <h1 class="mb-1">{{ movie.title }}</h1>
+    <p>{{movie['plot outline']}}</p>
+
+
+</div>
+
+<div class="container">
+    <h3>User Vocabulary</h3>
+    <table>
+        <tr>
+            <th>Word</th>
+            <th>Definition</th>
+            <th></th>
+        </tr>
+        {%for row in db_words%}
+        <tr>
+
+                <td>{{row.Word}}</td>
+                <td>{{row.Description}}</td>
+                <td>
+                    <form>
+                        <input type="text" name="front" value="{{row.Word}}" hidden/>
+                        <input type="text" name="back" value="{{row.Description}}" hidden/>
+
+                        <input type="submit" onclick="add_to_flashcards('{{row.Word}}','{{row.Description}}')" value="Add to Flashcards" class="search-btn"/>
+                    </form>
+                </td>
+
+        </tr>
+        {% endfor %}
+        <tr>
+            <form>
+
+                <!--<div class="form-box">-->
+                <td>
+                    <input type="text" class="search-field" name="word" placeholder="Add word">
+                </td>
+                <td>
+                    <input type="text" class="search-field" name="desc" placeholder="Add description">
+                    <input type="text" name="id" value="{{movie.movieID}}" hidden>
+                </td>
+                <td>
+                    <input id='search-btn' class="search-btn" type="submit">
+                </td>
+                <!--</div>-->
+            </form>
+        </tr>
+    </table>
+</div>
+
+<div class="container">
+    <h3>Use a dictionary</h3>
+    <input type="text" id="word" placeholder="word to find"/>
+    <button id="button" class="search-btn">Send</button>
+    <div id="table-dict">
+        <table id="vocabulary">
+
+        </table>
+    </div>
+</div>
+
+</body>
+<script type="text/javascript"
+        src="{{ url_for('static', filename='movie.js') }}"></script>
+</html>
