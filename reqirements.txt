@@ -3,3 +3,7 @@ gunicorn
 flask_restplus
 IMDbPY
 requests
+Jinja2
+MarkupSafe
+Werkzeug
+wheel
