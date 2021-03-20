@@ -3,7 +3,7 @@ gunicorn==19.9.0
 flask-restplus==0.13.0
 IMDbPY==6.8
 requests==2.22.0
-Jinja2==2.10.1
+Jinja2==2.11.3
 MarkupSafe==1.1.1
 Werkzeug==0.15.2
 wheel==0.33.1
